@@ -1,0 +1,74 @@
+{% load wagtailcore_tags wagtailsettings_tags wagtailimages_tags coderedcms_tags i18n %}
+
+
+{% if not settings.coderedcms.LayoutSettings.navbar_wrapper_fluid %}
+<div class="container">
+{% endif %}
+<nav class="navbar navbar-header bg-light">
+
+{% if not settings.coderedcms.LayoutSettings.navbar_content_fluid %}
+<div class="container inline-block">
+{% endif %}
+   <div>
+   <a class="navbar-brand" href="/">
+         {% if settings.coderedcms.LayoutSettings.logo %}
+         {% image settings.coderedcms.LayoutSettings.logo original as logo %}
+         <img class="img-fluid" src="{{logo.url}}" alt="{{site.site_name}}" />
+         {% else %}
+         {{site.site_name}}
+         {% endif %}
+   </a>
+    </div>
+    <div>
+   {% if settings.coderedcms.LayoutSettings.navbar_search %}
+   <form class="form-inline" action="{% url 'codered_search' %}" method="GET">
+         {% load bootstrap4 %}
+         {% get_searchform request as form %}
+         {% bootstrap_form form layout='inline' %}
+         <div class="form-group">
+            <button id="btnsearch" class="btn btn-outline-primary ml-2" type="submit">{% trans '🔍' %}</button>
+         
+   </form>
+</div>
+   {% endif %}
+
+   </div>
+{% if not settings.coderedcms.LayoutSettings.navbar_content_fluid %}
+</div><!-- /.container -->
+{% endif %}
+
+</nav>
+
+<!--Segunda Barra -->
+
+<nav class="navbar {% get_navbar_css %}" id="navbardown">
+    <div class="container" style="justify-content: center;">
+
+
+       <ul>
+             {% if page.index_classifiers.exists %}
+                </div>
+                   <div class="inline-block" style="justify-content: center;">
+                    {% include "coderedcms/includes/classifier_nav.html" %}
+                   </div>
+                </div>
+            {% endif %}
+       </ul>
+    
+    </div>
+    
+</nav>
+    
+    {% if not settings.coderedcms.LayoutSettings.navbar_wrapper_fluid %}
+    </div><!-- /.container -->
+    {% endif %}
+    
+    {# Navbar offset #}
+    {% if settings.coderedcms.LayoutSettings.navbar_fixed %}
+       {% if settings.coderedcms.LayoutSettings.logo %}
+       <div class="{{settings.coderedcms.LayoutSettings.navbar_format}}-fixed-img-offset {{settings.coderedcms.LayoutSettings.navbar_collapse_mode}}"></div>
+       {% else %}
+       <div class="{{settings.coderedcms.LayoutSettings.navbar_format}}-fixed-offset {{settings.coderedcms.LayoutSettings.navbar_collapse_mode}}"></div>
+       {% endif %}
+    {% endif %}
+

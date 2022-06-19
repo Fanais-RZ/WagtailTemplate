@@ -1,0 +1,29 @@
+a {
+    color: #ff6401;
+}
+
+#btnsearch{
+    border-radius: 45%;
+    background-color: #ff6401;
+    border: 2px solid #ff6401;
+}
+
+#btnleer{
+    background-color: #ff6401;
+    border: 2px solid #ff6401;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.form-inline{
+    border-radius: 20%;
+}
+
+#navbardown{
+    flex-wrap: wrap-reverse;
+    align-content: center;
+    display: flex;
+    justify-content: center
+}
