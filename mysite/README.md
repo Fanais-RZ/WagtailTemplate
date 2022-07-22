@@ -1,8 +1,5 @@
 # BuscaNoticias. website
 
-Code for site at: http://www.BuscaNoticias.io
-
-
 ## Getting started
 
 Make sure a recent version of Python is installed on your system.
